@@ -24,6 +24,15 @@ class WordListFragment : Fragment() {
     private var _binding: FragmentWordListBinding? = null
     private val binding get() = _binding!!
     private lateinit var recyclerView: RecyclerView
+    private lateinit var letterId: String
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        arguments?.let {
+            letterId = it.getString(LETTER).toString()
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,7 +48,6 @@ class WordListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(this.requireContext())
-        val letterId = activity?.intent?.extras?.getString(LETTER).toString()
         recyclerView.adapter = WordAdapter(letterId, this.requireContext())
         recyclerView.addItemDecoration(
             DividerItemDecoration(this.requireContext(), DividerItemDecoration.VERTICAL)
