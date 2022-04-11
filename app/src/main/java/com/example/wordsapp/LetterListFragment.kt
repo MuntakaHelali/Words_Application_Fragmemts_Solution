@@ -13,7 +13,7 @@ class LetterListFragment : Fragment() {
     private var _binding: FragmentLetterListBinding? = null
     private val binding get() = _binding!! // get-only refers to get the value, but once assigned can't be assigned to something else
     private lateinit var recyclerView: RecyclerView
-    private var isLinearLayoutManager = true
+    private var isLinearLayoutManager = true //From Main Activity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
