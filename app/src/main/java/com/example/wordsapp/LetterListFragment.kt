@@ -90,12 +90,13 @@ class LetterListFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.action_switch_layout -> {
+                // Sets isLinearLayoutManager (a Boolean) to the opposite value
+                isLinearLayoutManager = !isLinearLayoutManager
 
                 lifecycleScope.launch{
                     SettingsDataStore.saveLayoutToPreferencesStore(isLinearLayoutManager, requireContext())
                 }
-                // Sets isLinearLayoutManager (a Boolean) to the opposite value
-                isLinearLayoutManager = !isLinearLayoutManager
+
                 // Sets layout and icon
                 chooseLayout()
                 setIcon(item)
